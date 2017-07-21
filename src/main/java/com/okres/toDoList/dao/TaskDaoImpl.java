@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @Repository
-public class TaskDaoImpl implements TaskDao{
+public class TaskDaoImpl implements TaskDao {
 
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(TaskDaoImpl.class);
 
@@ -43,7 +43,7 @@ public class TaskDaoImpl implements TaskDao{
         Session session = this.sessionFactory.getCurrentSession();
         List<Task> tasks = session.createQuery("from Task").list();
 
-        for (Task task : tasks){
+        for (Task task : tasks) {
             logger.info("Task list info: " + task);
         }
         return tasks;
@@ -60,8 +60,8 @@ public class TaskDaoImpl implements TaskDao{
     @Override
     public void deleteTask(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Task task = (Task)session.load(Task.class, new Integer(id));
-        if (task != null){
+        Task task = (Task) session.load(Task.class, new Integer(id));
+        if (task != null) {
             session.delete(task);
         }
 

@@ -1,4 +1,4 @@
-package com.okres.toDoList.dao;
+package com.okres.toDoList.service;
 
 import com.okres.toDoList.model.Task;
 
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Alex on 21.07.2017.
  */
-public interface TaskDao {
+public interface TaskService {
     public void addTask(Task task);
 
     public void updateTask(Task task);
