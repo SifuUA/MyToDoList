@@ -2,6 +2,7 @@ package com.okres.toDoList.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Calendar;
 
 /**
  * Created by Alex on 21.07.2017.
@@ -11,7 +12,7 @@ import java.sql.Date;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
 
@@ -21,7 +22,7 @@ public class Task {
     @Column(name = "created")
     private Date created;
 
-    @Column(name = "prority")
+    @Column(name = "priority")
     private int priority;
 
     @Column(name = "due_date")

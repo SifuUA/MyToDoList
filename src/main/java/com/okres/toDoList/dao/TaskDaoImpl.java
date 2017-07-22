@@ -19,6 +19,8 @@ public class TaskDaoImpl implements TaskDao {
 
     private SessionFactory sessionFactory;
 
+
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

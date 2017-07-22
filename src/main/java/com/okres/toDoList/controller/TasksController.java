@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 /**
  * Created by Alex on 21.07.2017.
  */
@@ -35,7 +38,13 @@ public class TasksController {
 
     @RequestMapping(value = "/tasks/add", method = RequestMethod.POST)
     public String addTask(@ModelAttribute("task") Task task) {
-        if (task.getId() != 0) {
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        task.setCreated(sqlDate);
+        if (task.getPriority() > 5){
+            task.setPriority(5);
+        }
+        if (task.getId() == 0) {
             this.taskService.addTask(task);
         } else {
             this.taskService.updateTask(task);
@@ -50,7 +59,7 @@ public class TasksController {
         return "redirect:/tasks";
     }
 
-    @RequestMapping("edit{id}")
+    @RequestMapping("/edit/{id}")
     public String editTask(@PathVariable("id") int id, Model model) {
         model.addAttribute("task", this.taskService.getTaskById(id));
         model.addAttribute("list", this.taskService.listTasks());
